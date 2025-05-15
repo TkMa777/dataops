@@ -1,0 +1,51 @@
+# Fichiers et dossiers Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+
+# Environnements virtuels
+.venv/
+venv/
+ENV/
+
+# Fichiers de configuration d'environnement
+.env
+.env.*
+
+# Dossiers de logs
+logs/
+*.log
+
+# Fichiers de base de données temporaires
+*.sqlite3
+
+# Dossiers de Airflow
+airflow.db
+unittests.cfg
+
+# Fichiers générés par Docker
+**/postgres-db-volume/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de test
+.coverage
+htmlcov/
+.tox/
+
+# Fichiers de configuration d'éditeur
+.idea/
+.vscode/
+
+# Autres fichiers temporaires
+*.bak
+*.swp
+*.tmp 

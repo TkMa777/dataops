@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: airflow_db
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
     networks:
       - epsi_dataops_network
     healthcheck:
@@ -52,8 +54,8 @@ services:
     environment:
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow_db
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__CORE__FERNET_KEY=n7YM4+01XUsIu7zxL8Dawiff7KDjeAloypPje9d7xTg=
-      - AIRFLOW__WEBSERVER__SECRET_KEY=ao/9Q9XwDe44GaDlzAcCchBwFEIMkHwLbkEm32cvqZw=
+      - AIRFLOW__CORE__FERNET_KEY=ajEeXRsnvbpfWqn5aEPPPlNn+KJA9eX0iOALNiEjCW4=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=pE6JAXwlogJlek0nhDOs0hru8FTh1rnCF9eFYPnSOzg=
       - AIRFLOW__WEBSERVER__RBAC=True
     ports:
       - "8082:8080"
@@ -80,7 +82,7 @@ services:
     environment:
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow_db
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__CORE__FERNET_KEY=n7YM4+01XUsIu7zxL8Dawiff7KDjeAloypPje9d7xTg=
+      - AIRFLOW__CORE__FERNET_KEY=ajEeXRsnvbpfWqn5aEPPPlNn+KJA9eX0iOALNiEjCW4=
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
