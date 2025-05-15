@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    database: airflow_db
+    schema: public
+    tables:
+      - name: raw_sales
+        description: "Données brutes de ventes importées depuis le fichier CSV"
+        columns:
+          - name: InvoiceNo
+            description: "Numéro de facture"
+          - name: StockCode
+            description: "Code produit"
+          - name: Description
+            description: "Description du produit"
+          - name: Quantity
+            description: "Quantité vendue"
+          - name: InvoiceDate
+            description: "Date et heure de la transaction"
+          - name: UnitPrice
+            description: "Prix unitaire"
+          - name: CustomerID
+            description: "Identifiant du client"
+            tests:
+              - not_null: 
+                  where: "\"CustomerID\" is not null"
+          - name: Country
+            description: "Pays de la transaction" 

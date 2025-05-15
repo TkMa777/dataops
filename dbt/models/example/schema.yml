@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: example_model
+    description: "Un modèle d'exemple pour démarrer"
+    columns:
+      - name: id
+        description: "Identifiant unique"
+        tests:
+          - unique
+          - not_null 

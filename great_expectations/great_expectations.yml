@@ -1,0 +1,66 @@
+config_version: 3.0
+
+expectations_store_name: expectations_store
+validations_store_name: validations_store
+evaluation_parameter_store_name: evaluation_parameter_store
+checkpoint_store_name: checkpoint_store
+
+datasources:
+  postgres_datasource:
+    class_name: Datasource
+    execution_engine:
+      module_name: great_expectations.execution_engine
+      connection_string: postgresql://airflow:airflow@postgres:5432/airflow_db
+      class_name: SqlAlchemyExecutionEngine
+    data_connectors:
+      default_runtime_data_connector:
+        class_name: RuntimeDataConnector
+        batch_identifiers:
+          - default_identifier_name
+        module_name: great_expectations.datasource.data_connector
+        name: default_runtime_data_connector
+      default_inferred_data_connector:
+        introspection_directives:
+          schema_name: public
+        class_name: InferredAssetSqlDataConnector
+        module_name: great_expectations.datasource.data_connector
+        include_schema_name: true
+        name: default_inferred_data_connector
+    module_name: great_expectations.datasource
+stores:
+  expectations_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: expectations/
+  validations_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: validations/
+  evaluation_parameter_store:
+    class_name: EvaluationParameterStore
+  checkpoint_store:
+    class_name: CheckpointStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: checkpoints/
+
+data_docs_sites:
+  local_site:
+    class_name: SiteBuilder
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: great_expectations/render/
+    site_index_builder:
+      class_name: DefaultSiteIndexBuilder
+anonymous_usage_statistics:
+  enabled: true
+  data_context_id: 3622668a-f267-4e19-a9b6-00760974a4bf
+plugins_directory:
+notebooks:
+config_variables_file_path:
+include_rendered_content:
+  globally: false
+  expectation_suite: false
+  expectation_validation_result: false

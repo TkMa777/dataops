@@ -1,0 +1,379 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {
+        "default_identifier_name": "default_identifier"
+      },
+      "data_asset_name": "raw_sales",
+      "data_connector_name": "default_runtime_data_connector",
+      "datasource_name": "postgres_datasource"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250515T122709.908277Z"
+    },
+    "batch_spec": {
+      "data_asset_name": "raw_sales",
+      "query": "SELECT * FROM raw_sales",
+      "temp_table_schema_name": null
+    },
+    "checkpoint_id": null,
+    "checkpoint_name": "raw_sales_checkpoint",
+    "expectation_suite_name": "raw_sales_suite",
+    "great_expectations_version": "0.15.46",
+    "run_id": {
+      "run_name": "sales_validation_20250515_122709",
+      "run_time": "2025-05-15T12:27:09.905544+00:00"
+    },
+    "validation_id": null,
+    "validation_time": "20250515T122709.926527Z"
+  },
+  "results": [
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_table_row_count_to_be_between",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "max_value": 1000000,
+          "min_value": 1
+        },
+        "meta": {
+          "notes": {
+            "content": "V\u00e9rifie que le nombre de lignes est dans une plage raisonnable",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "observed_value": 0
+      },
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_table_columns_to_match_ordered_list",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column_list": [
+            "InvoiceNo",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID",
+            "Country"
+          ]
+        },
+        "meta": {
+          "notes": {
+            "content": "V\u00e9rifie que toutes les colonnes attendues sont pr\u00e9sentes dans le bon ordre",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "observed_value": [
+          "InvoiceNo",
+          "StockCode",
+          "Description",
+          "Quantity",
+          "InvoiceDate",
+          "UnitPrice",
+          "CustomerID",
+          "Country"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_compound_columns_to_be_unique",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column_list": [
+            "InvoiceNo",
+            "StockCode"
+          ],
+          "mostly": 0.9
+        },
+        "meta": {
+          "notes": {
+            "content": "La combinaison de InvoiceNo et StockCode doit \u00eatre unique dans 90% des cas",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "missing_count": 0,
+        "missing_percent": null,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": null,
+        "unexpected_percent_nonmissing": null,
+        "unexpected_percent_total": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "InvoiceNo"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "StockCode"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "UnitPrice",
+          "mostly": 0.99
+        },
+        "meta": {
+          "notes": {
+            "content": "UnitPrice ne doit jamais \u00eatre null",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "UnitPrice",
+          "min_value": 0,
+          "mostly": 0.99
+        },
+        "meta": {
+          "notes": {
+            "content": "UnitPrice doit \u00eatre positif",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "missing_count": 0,
+        "missing_percent": null,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null,
+        "unexpected_percent_nonmissing": null,
+        "unexpected_percent_total": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "Quantity",
+          "min_value": 0,
+          "mostly": 0.95
+        },
+        "meta": {
+          "notes": {
+            "content": "Quantity doit \u00eatre positif dans la plupart des cas",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "missing_count": 0,
+        "missing_percent": null,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null,
+        "unexpected_percent_nonmissing": null,
+        "unexpected_percent_total": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "InvoiceDate",
+          "mostly": 0.99
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_match_regex",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "InvoiceDate",
+          "mostly": 0.99,
+          "regex": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$"
+        },
+        "meta": {
+          "notes": {
+            "content": "InvoiceDate doit \u00eatre une date valide au format YYYY-MM-DD HH:MM:SS",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "missing_count": 0,
+        "missing_percent": null,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null,
+        "unexpected_percent_nonmissing": null,
+        "unexpected_percent_total": null
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "7ee6e338e70edf8204cecb2dfc50ae56",
+          "column": "Country",
+          "mostly": 0.99
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "element_count": 0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": null,
+        "unexpected_percent": null
+      },
+      "success": true
+    }
+  ],
+  "statistics": {
+    "evaluated_expectations": 11,
+    "success_percent": 90.9090909090909,
+    "successful_expectations": 10,
+    "unsuccessful_expectations": 1
+  },
+  "success": false
+}

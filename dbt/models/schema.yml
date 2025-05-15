@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: stg_sales
+    description: "Table de staging des données de ventes nettoyées"
+    columns:
+      - name: sale_id
+        description: "Identifiant unique pour chaque ligne de vente"
+        tests:
+          - unique
+          - not_null
+      - name: invoice_no
+        description: "Numéro de facture"
+        tests:
+          - not_null
+      - name: stock_code
+        description: "Code produit"
+        tests:
+          - not_null
+      - name: description
+        description: "Description du produit"
+      - name: quantity
+        description: "Quantité vendue"
+        tests:
+          - not_null
+          - positive_values
+      - name: invoice_date
+        description: "Date et heure de la transaction"
+        tests:
+          - not_null
+      - name: invoice_date_only
+        description: "Date de la transaction (sans l'heure)"
+      - name: unit_price
+        description: "Prix unitaire"
+        tests:
+          - not_null
+          - positive_values
+      - name: customer_id
+        description: "Identifiant du client"
+        tests:
+          - not_null
+      - name: country
+        description: "Pays de la transaction"
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Montant total (Quantité * Prix unitaire)"
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invoice_no
+            - stock_code
+          config:
+            # Rendre le test avertissement seulement, sans faire échouer le job
+            severity: warn
+
+  - name: fct_daily_revenue
+    description: "Agrégation des revenus quotidiens par pays"
+    columns:
+      - name: date
+        description: "Date de la transaction"
+        tests:
+          - not_null
+      - name: year
+        description: "Année de la transaction"
+      - name: month
+        description: "Mois de la transaction"
+      - name: day
+        description: "Jour du mois"
+      - name: day_of_week
+        description: "Jour de la semaine (0-6, 0 étant dimanche)"
+      - name: country
+        description: "Pays de la transaction"
+        tests:
+          - not_null
+      - name: total_invoices
+        description: "Nombre total de factures uniques"
+      - name: total_customers
+        description: "Nombre total de clients uniques"
+      - name: total_quantity
+        description: "Quantité totale vendue"
+      - name: total_revenue
+        description: "Revenu total"
+      - name: avg_price_per_item
+        description: "Prix moyen par article"
+      - name: avg_revenue_per_invoice
+        description: "Revenu moyen par facture"
+      - name: avg_revenue_per_customer
+        description: "Revenu moyen par client" 

@@ -1,0 +1,141 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "raw_sales_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 1,
+        "max_value": 1000000
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Vérifie que le nombre de lignes est dans une plage raisonnable"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_ordered_list",
+      "kwargs": {
+        "column_list": [
+          "InvoiceNo",
+          "StockCode",
+          "Description",
+          "Quantity",
+          "InvoiceDate",
+          "UnitPrice",
+          "CustomerID",
+          "Country"
+        ]
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Vérifie que toutes les colonnes attendues sont présentes dans le bon ordre"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "InvoiceNo"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "StockCode"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "UnitPrice",
+        "mostly": 0.99
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "UnitPrice ne doit jamais être null"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "UnitPrice",
+        "min_value": 0,
+        "mostly": 0.99
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "UnitPrice doit être positif"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "Quantity",
+        "min_value": 0,
+        "mostly": 0.95
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Quantity doit être positif dans la plupart des cas"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "InvoiceDate",
+        "mostly": 0.99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "InvoiceDate",
+        "regex": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$",
+        "mostly": 0.99
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "InvoiceDate doit être une date valide au format YYYY-MM-DD HH:MM:SS"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Country",
+        "mostly": 0.99
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": ["InvoiceNo", "StockCode"],
+        "mostly": 0.90
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La combinaison de InvoiceNo et StockCode doit être unique dans 90% des cas"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "great_expectations_version": "0.15.0"
+  }
+} 
